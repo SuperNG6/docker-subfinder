@@ -136,6 +136,10 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 ## 关于群晖
 
+ # 官方说明文档
+ <details>
+   <summary>群晖DSM权限设置</summary>
+
 群晖用户请使用你当前的用户SSH进系统，输入 ``id 你的用户id`` 获取到你的UID和GID并输入进去
 
 ![nwmkxT](https://cdn.jsdelivr.net/gh/SuperNG6/pic@master/uPic/nwmkxT.jpg)
@@ -145,6 +149,8 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 ### 权限管理设置
 对你的``docker配置文件夹的根目录``进行如图操作，``你的下载文件夹的根目录``进行相似操作，去掉``管理``这个权限，只给``写入``,``读取``权限
 ![r4dsfV](https://cdn.jsdelivr.net/gh/SuperNG6/pic@master/uPic/r4dsfV.jpg)
+
+ </details>
 
 ## Linux
 
