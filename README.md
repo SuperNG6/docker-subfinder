@@ -136,7 +136,6 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 ## 关于群晖
 
- # 官方说明文档
  <details>
    <summary>群晖DSM权限设置</summary>
 
