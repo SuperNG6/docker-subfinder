@@ -113,18 +113,18 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 - 做了usermapping，使用你自己的账户权限来运行，这点对于群辉来说尤其重要
 - 支持选择执行检查完全部文件后是否后退出容器
 - 镜像体积巨大200M，无法继续压缩镜像体积
-- base images使用ubuntu，alpine下缺少部分库
+- base images使用ubuntu cloud (仅20M)，alpine下缺少部分库
 
 
 # Architecture
 只有x86-64版，arm64版编译失败，可能有些库没有
 | Architecture | Tag            |
 | ------------ | -------------- |
-| x86-64       | latest   |
+| x86-64       | latest         |
 
 
 # Changelogs
-## 2020/03/5
+## 2020/03/05
 
       1、first commit
 
