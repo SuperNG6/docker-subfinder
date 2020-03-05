@@ -111,7 +111,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 # 本镜像的一些特点
 - 做了usermapping，使用你自己的账户权限来运行，这点对于群辉来说尤其重要
-- 支持选择执行检查完全部文件后是否后退出容器
+- 支持选择执行检查完全部文件后是否后退出容器（默下载完成全部字幕后自动退出容器）
 - 镜像体积巨大200M，无法继续压缩镜像体积
 - base images使用ubuntu cloud (仅20M)，alpine下缺少部分库
 
