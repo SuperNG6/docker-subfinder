@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bash
+
+# 检查config配置文件，并创建
+if [ ! -e "/config/subfinder.json" ] ;  then 
+cp /subfinder/subfinder.json /config/subfinder.json
+fi
+
+# 启动subfinder查找字幕
+exec \
+	s6-setuidgid abc \
+	subfinder /libraries \
+	-c /config/subfinder.json

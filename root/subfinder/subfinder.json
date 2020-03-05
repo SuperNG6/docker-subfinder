@@ -1,0 +1,11 @@
+{
+    "languages": ["zh", "zh_chs","zh_en"],
+    "exts": ["ass", "srt"],
+    "method": ["shooter", "zimuzu", "zimuku"],
+    "video_exts": [".mp4", ".mkv", ".iso"],
+    "api_urls": {
+       "zimuku": "http://www.zimuku.la/search",
+       "zimuzu": "http://www.rrys2019.com/search",
+       "zimuzu_subtitle_api_url": "http://got001.com/api/v1/static/subtitle/detail"
+    }
+ }
