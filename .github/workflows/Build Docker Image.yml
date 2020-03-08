@@ -1,8 +1,8 @@
 name: Build Docker Image
-on: 
+on:
   push:
-  paths-ignore:
-  - 'README.md'
+    paths-ignore:
+    - 'README.md'
 
 jobs:
   build:
