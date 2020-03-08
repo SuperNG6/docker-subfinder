@@ -1,4 +1,5 @@
-# Docker Aria2的最佳实践
+# Docker SubFinder 自动刮削字幕器
+
 Docker Hub：https://hub.docker.com/r/superng6/subfinder
 
 GitHub：https://www.github.com/SuperNG6/docker-subfinder
