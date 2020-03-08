@@ -1,5 +1,13 @@
 #!/usr/bin/with-contenv bash
 
+# 检查config配置文件，并创建
+if [ ! -e "/config/subfinder.json" ] ;  then 
+cp /subfinder/subfinder.json /config/subfinder.json
+fi
+
+# 软连接启动配置
+ln -s /etc/services.d/subfinder/run /config/
+
 # permissions
 chown -R abc:abc \
     /config \

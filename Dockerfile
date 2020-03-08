@@ -8,7 +8,6 @@ ENV TZ=Asia/Shanghai AUTOEXIT=true PUID=1026 PGID=100
 RUN apt -y update && apt -y install python3 python3-pip unrar \
 &&  pip3 install --upgrade pip \
 &&  pip install subfinder \
-&&  mkdir /libraries \
 &&  echo "**** cleanup ****" \
 &&  apt-get clean \
 &&  rm -rf \
