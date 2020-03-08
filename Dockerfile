@@ -18,5 +18,5 @@ RUN apt -y update && apt -y install python3 python3-pip unrar \
 # copy local files
 COPY root/ /
 
-# permissions
+# volume
 VOLUME /config	/libraries
