@@ -1,4 +1,4 @@
-name: Build amd64 Image
+name: Build Docker Image
 on: push
 
 jobs:
