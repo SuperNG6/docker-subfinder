@@ -11,7 +11,6 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
  具体的参数请参照subfinder的readme进行修改修改
 
  1、配置文件`subfinder.json`位于`/config/subfinder.json`，请根据的你情况自行修改  
- 2、自定义刮削字幕目录`/config/run`,`subfinder /libraries/`后为你需要自定义的被刮削字幕的视频的文件夹(默认扫描目录为被被挂载的目录)
  
 ````
  exec \
@@ -134,10 +133,6 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 
 # Changelogs
-## 2020/03/08
-
-      1、软链接启动配置文件，现在可以相对方便的设置需要刮削字幕的文件夹（/config/run）
-   
 ## 2020/03/05
 
       1、first commit
