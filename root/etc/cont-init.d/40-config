@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# 启动subfinder查找字幕
+
+if [ "$START" == "true" ];then
+exec \
+	s6-setuidgid abc \
+	subfinder /libraries \
+	-c /config/subfinder.json
+fi
