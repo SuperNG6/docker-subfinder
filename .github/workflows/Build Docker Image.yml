@@ -17,6 +17,6 @@ jobs:
               publish: true
               imageName: superng6/subfinder
               platform: linux/amd64
-              tag: latest
+              tag: dev
               dockerHubUser: ${{ secrets.DOCKER_USERNAME }}
               dockerHubPassword: ${{ secrets.DOCKER_PASSWORD }}
