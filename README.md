@@ -138,6 +138,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 	1、update subfinder 1.1.1
   2、更改执行计划为，打开容器后开始遍历媒体文件，遍历结束后休眠，之后每隔一小时遍历一次
+  3、更改媒体挂载卷为``/media``
 
 ## 2020/03/05
 
