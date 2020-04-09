@@ -2,10 +2,10 @@ FROM lsiobase/ubuntu:bionic
 
 # set label
 LABEL maintainer="NG6"
-ENV TZ=Asia/Shanghai AUTOEXIT=true PUID=1026 PGID=100
+ENV TZ=Asia/Shanghai AUTOEXIT=false PUID=1026 PGID=100 
 
 # install subfinder
-RUN apt -y update && apt -y install python3 python3-pip unrar \
+RUN apt -y update && apt -y install python3 python3-pip unrar cron \
 &&  pip3 install --upgrade pip \
 &&  pip install subfinder \
 &&  echo "**** cleanup ****" \
@@ -19,4 +19,4 @@ RUN apt -y update && apt -y install python3 python3-pip unrar \
 COPY root/ /
 
 # volumes
-VOLUME /config	/libraries
+VOLUME /config	/media

@@ -8,4 +8,4 @@ fi
 # permissions
 chown -R abc:abc \
     /config \
-    /libraries
+    /media
