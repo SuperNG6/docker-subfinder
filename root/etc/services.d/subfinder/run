@@ -3,11 +3,10 @@
 # 启动subfinder查找字幕
 # exec \
 # 	s6-setuidgid abc \
-# 	subfinder /libraries \
+# 	subfinder /media \
 # 	-c /config/subfinder.json
 
 echo "*/60       *       *       *       *       exec \
 	s6-setuidgid abc \
-	subfinder /libraries \
+	subfinder /media \
 	-c /config/subfinder.json" > /var/spool/cron/crontabs/root
-    

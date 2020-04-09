@@ -4,5 +4,5 @@
 
 exec \
 	s6-setuidgid abc \
-	subfinder /libraries \
+	subfinder /media \
 	-c /config/subfinder.json

@@ -19,4 +19,4 @@ RUN apt -y update && apt -y install python3 python3-pip unrar cron \
 COPY root/ /
 
 # volumes
-VOLUME /config	/libraries
+VOLUME /config	/media
