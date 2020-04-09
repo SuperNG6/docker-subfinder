@@ -1,7 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-# 设定定时检查字幕任务
-echo "*/60       *       *       *       *       exec \
-	s6-setuidgid abc \
-	subfinder /libraries \
-	-c /config/subfinder.json" > /var/spool/cron/crontabs/root
