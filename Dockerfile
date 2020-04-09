@@ -2,7 +2,7 @@ FROM lsiobase/ubuntu:bionic
 
 # set label
 LABEL maintainer="NG6"
-ENV TZ=Asia/Shanghai AUTOEXIT=false START=true AUTOEXITPUID=1026 PGID=100 
+ENV TZ=Asia/Shanghai AUTOEXIT=false AUTOEXITPUID=1026 PGID=100 
 
 # install subfinder
 RUN apt -y update && apt -y install python3 python3-pip unrar cron \
