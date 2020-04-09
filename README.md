@@ -15,7 +15,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 ````
  exec \
 	s6-setuidgid abc \
-	subfinder /libraries \
+	subfinder /media \
 	-c /config/subfinder.json
 ````
 
@@ -137,8 +137,8 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 ## 2020/04/09
 
 	1、update subfinder 1.1.1
-  2、更改执行计划为，打开容器后开始遍历媒体文件，遍历结束后休眠，之后每隔一小时遍历一次
-  3、更改媒体挂载卷为``/media``
+  	2、更改执行计划为，打开容器后开始遍历媒体文件，遍历结束后休眠，之后每隔一小时遍历一次
+  	3、更改媒体挂载卷为``/media``
 
 ## 2020/03/05
 
@@ -179,7 +179,7 @@ docker create \
   -e PGID=100 \
   -e TZ=Asia/Shanghai \
   -v /path/to/appdata/config:/config \
-  -v /path/to/libraries:/libraries \
+  -v /path/to/libraries:/media \
   superng6/subfinder
   ````
 docker-compose  
@@ -195,5 +195,5 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - /path/to/appdata/config:/config
-      - /path/to/libraries:/libraries
+      - /path/to/libraries:/media
 ````
