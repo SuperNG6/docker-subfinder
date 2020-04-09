@@ -137,6 +137,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 ## 2020/04/09
 
 	1、update subfinder 1.1.1
+  2、更改执行计划为，打开容器后开始遍历媒体文件，遍历结束后休眠，之后每隔一小时遍历一次
 
 ## 2020/03/05
 
@@ -146,7 +147,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 # Document
 
 ## 挂载路径
-``/config`` ``/libraries``
+``/config`` ``/media``
 
 ## 关于群晖
 
