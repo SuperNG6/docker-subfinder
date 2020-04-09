@@ -1,4 +1,5 @@
 {
+   "languages": ["zh"],
    "exts": ["ass", "srt"],
    "method": ["shooter", "zimuzu", "zimuku"],
    "video_exts": [".mp4", ".mkv", ".iso"],
