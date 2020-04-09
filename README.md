@@ -1,10 +1,12 @@
 # Docker SubFinder 自动刮削字幕器
 
+### 自动刮削媒体文件字幕，打开容器后开始遍历媒体文件，遍历结束后休眠，之后每隔一小时遍历一次
+
 Docker Hub：https://hub.docker.com/r/superng6/subfinder
 
 GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
-博客：https://sleele.com
+博客：https://sleele.com/2020/04/09/subfinder
 
 
  本镜像根据：ausaki的 https://github.com/ausaki/subfinder 字幕查找器制作
