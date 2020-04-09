@@ -133,9 +133,14 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 
 # Changelogs
+
+## 2020/04/09
+
+	1、update subfinder 1.1.1
+
 ## 2020/03/05
 
-      1、first commit
+	1、first commit
 
 
 # Document
@@ -177,7 +182,7 @@ docker create \
   ````
 docker-compose  
   ````
-  version: "2"
+  version: "3"
 services:
   aria2:
     image: superng6/subfinder
