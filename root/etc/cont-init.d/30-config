@@ -14,3 +14,4 @@ chown -R abc:abc \
     /config \
     /media
 
+chmod a+x /subfinder/search-subtitles.sh
