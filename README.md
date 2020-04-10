@@ -10,7 +10,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 
  本镜像根据：ausaki的 https://github.com/ausaki/subfinder 字幕查找器制作
- 具体的参数请参照subfinder的readme进行修改修改
+ 具体的参数请参照subfinder的readme进行修改  
 
  1、配置文件`subfinder.json`位于`/config/subfinder.json`，请根据的你情况自行修改  
  2、计划任务配置`subfinder-cron`位于`/config/subfinder-cron`，请根据的你情况自行修改  
