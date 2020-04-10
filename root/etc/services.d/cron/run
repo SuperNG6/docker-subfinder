@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+# 启动定时任务
+exec \
+	cron -f -L /dev/null

@@ -10,7 +10,7 @@ if [ ! -e "/config/subfinder-cron" ] ;  then
 cp /subfinder/subfinder-cron /config/subfinder-cron
 fi
 
-crontab -u abc /config/subfinder-cron
+crontab /config/subfinder-cron
 
 # permissions
 chown -R abc:abc \
@@ -18,3 +18,4 @@ chown -R abc:abc \
     /media
 
 chmod a+x /subfinder/search-subtitles.sh
+

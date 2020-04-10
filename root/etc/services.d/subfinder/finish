@@ -1,7 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-# 判断执行检查完全部文件后是否后退出容器
-if [ "${AUTOEXIT}" = "true" ]
-then
-   s6-svscanctl -t /var/run/s6/services
-fi
