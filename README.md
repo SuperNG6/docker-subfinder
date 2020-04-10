@@ -12,8 +12,8 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
  本镜像根据：ausaki的 https://github.com/ausaki/subfinder 字幕查找器制作
  具体的参数请参照subfinder的readme进行修改修改
 
- 1、配置文件`subfinder.json`位于`/config/subfinder.json`，请根据的你情况自行修改
- 2、计划任务配置`subfinder-cron`位于`/config/subfinder-cron`，请根据的你情况自行修改
+ 1、配置文件`subfinder.json`位于`/config/subfinder.json`，请根据的你情况自行修改  
+ 2、计划任务配置`subfinder-cron`位于`/config/subfinder-cron`，请根据的你情况自行修改  
  
 ````
 {
@@ -144,16 +144,16 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 ## 2020/04/10
 
-  1、update subfinder 1.1.2
-  2、根据作者的意见，删除指定语言参数，默认全部语言
-  3、修复zimuzu解析问题
-  4、增加了手动选择执行间隔选项,`/config/subfinder-cron`，cron表达式
+  	1、update subfinder 1.1.2
+  	2、根据作者的意见，删除指定语言参数，默认全部语言
+  	3、修复zimuzu解析问题
+  	4、增加了手动选择执行间隔选项,`/config/subfinder-cron`，cron表达式
 
 ## 2020/04/09
 
 	1、update subfinder 1.1.1
-  2、更改执行计划为，打开容器后开始遍历媒体文件，遍历结束后休眠，之后每隔一小时遍历一次
-  3、更改媒体挂载卷为``/media``
+  	2、更改执行计划为，打开容器后开始遍历媒体文件，遍历结束后休眠，之后每隔一小时遍历一次
+  	3、更改媒体挂载卷为``/media``
 
 ## 2020/03/05
 
