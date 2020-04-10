@@ -5,6 +5,10 @@ if [ ! -e "/config/subfinder.json" ] ;  then
 cp /subfinder/subfinder.json /config/subfinder.json
 fi
 
+if [ ! -e "/var/spool/cron/crontabs/root" ] ;  then 
+touch /var/spool/cron/crontabs/root
+fi
+
 # permissions
 chown -R abc:abc \
     /config \
