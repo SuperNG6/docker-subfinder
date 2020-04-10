@@ -1,3 +1,3 @@
 #!/usr/bin/with-contenv bash
 
-sleep 360d
+/usr/sbin/cron -f -L 1

@@ -1,13 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-# 设定subfinder定时查找字幕
-if [ `grep  -c search-subtitles.sh /var/spool/cron/crontabs/root` -eq 0 ];then
-echo "*/60       *       *       *       *       /subfinder/search-subtitles.sh" > /var/spool/cron/crontabs/root
-echo =============subfinder定时查找字幕任务已设定=============
-else
-echo =============subfinder定时查找字幕任务已存在=============
-fi
-
 # 启动subfinder查找字幕
 exec \
 	s6-setuidgid abc \

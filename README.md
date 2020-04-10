@@ -12,14 +12,25 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
  本镜像根据：ausaki的 https://github.com/ausaki/subfinder 字幕查找器制作
  具体的参数请参照subfinder的readme进行修改修改
 
- 1、配置文件`subfinder.json`位于`/config/subfinder.json`，请根据的你情况自行修改  
+ 1、配置文件`subfinder.json`位于`/config/subfinder.json`，请根据的你情况自行修改
+ 2、计划任务配置`subfinder-cron`位于`/config/subfinder-cron`，请根据的你情况自行修改
  
 ````
- exec \
-	s6-setuidgid abc \
-	subfinder /media \
-	-c /config/subfinder.json
+{
+   "exts": ["ass", "srt"],
+   "method": ["shooter", "zimuzu", "zimuku"],
+   "video_exts": [".mp4", ".mkv", ".iso"],
+   "api_urls": {
+      "zimuku": "http://www.zimuku.la/search",
+      "zimuzu": "http://www.zmz2019.com/search",
+      "zimuzu_subtitle_api_url": "http://got001.com/api/v1/static/subtitle/detail"
+   }
+}
 ````
+
+默认执行间隔，每小时检查一次，如需修改，编辑`/config/subfinder-cron`
+
+![gqvg31](https://cdn.jsdelivr.net/gh/SuperNG6/pic@master/uPic/gqvg31.png)
 
 
  # 官方说明文档
@@ -102,17 +113,12 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 ```json
 {
-   "languages": ["zh", "en", "zh_chs"],
    "exts": ["ass", "srt"],
    "method": ["shooter", "zimuzu", "zimuku"],
    "video_exts": [".mp4", ".mkv", ".iso"],
-   "exclude": ["excluded_path/", "*abc.mp4"],
    "api_urls": {
-      // 设置字幕库的API
       "zimuku": "http://www.zimuku.la/search",
-      // 设置字幕组的API
       "zimuzu": "http://www.zmz2019.com/search",
-      // 设置字幕组获取字幕下载链接的API
       "zimuzu_subtitle_api_url": "http://got001.com/api/v1/static/subtitle/detail"
    }
 }
@@ -141,6 +147,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
   1、update subfinder 1.1.2
   2、根据作者的语言，删除指定语言参数，默认全部语言
   3、修复zimuzu解析问题
+  4、增加了手动选择执行间隔选项,`/config/subfinder-cron`，cron表达式
 
 ## 2020/04/09
 
