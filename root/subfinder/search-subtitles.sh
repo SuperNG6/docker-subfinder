@@ -3,5 +3,6 @@
 # 设定subfinder定时查找字幕
 # 启动subfinder查找字幕
 
-subfinder /media \
+s6-setuidgid abc \
+	subfinder /media \
 	-c /config/subfinder.json
