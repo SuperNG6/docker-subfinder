@@ -145,7 +145,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 ## 2020/04/10
 
   1、update subfinder 1.1.2
-  2、根据作者的语言，删除指定语言参数，默认全部语言
+  2、根据作者的意见，删除指定语言参数，默认全部语言
   3、修复zimuzu解析问题
   4、增加了手动选择执行间隔选项,`/config/subfinder-cron`，cron表达式
 
