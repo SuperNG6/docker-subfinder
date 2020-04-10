@@ -10,7 +10,7 @@ if [ ! -e "/config/subfinder-cron" ] ;  then
 cp /subfinder/subfinder-cron /config/subfinder-cron
 fi
 
-crontab /config/subfinder-cron
+crontab -u abc /config/subfinder-cron
 
 # permissions
 chown -R abc:abc \
