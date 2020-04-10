@@ -1,10 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-# 启动subfinder查找字幕
-# exec \
-# 	s6-setuidgid abc \
-# 	subfinder /media \
-# 	-c /config/subfinder.json
+# 启动subfinder定时查找字幕
 
 echo "*/60       *       *       *       *       exec \
 	s6-setuidgid abc \
