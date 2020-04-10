@@ -1,9 +1,19 @@
 #!/usr/bin/with-contenv bash
 
-# 设定subfinder定时查找字幕
-if [ `grep  -c subfinder /var/spool/cron/crontabs/root` -eq 0 ];then
+# 启动subfinder查找字幕
+# exec \
+# 	s6-setuidgid abc \
+# 	subfinder /media \
+# 	-c /config/subfinder.json
+
 echo "*/60       *       *       *       *       exec \
 	s6-setuidgid abc \
 	subfinder /media \
 	-c /config/subfinder.json" > /var/spool/cron/crontabs/root
-fi
+
+# if [ `grep  -c subfinder /var/spool/cron/crontabs/root` -eq 0 ];then
+# echo "*/60       *       *       *       *       exec \
+# 	s6-setuidgid abc \
+# 	subfinder /media \
+# 	-c /config/subfinder.json" > /var/spool/cron/crontabs/root
+# fi
