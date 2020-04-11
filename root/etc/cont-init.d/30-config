@@ -5,17 +5,9 @@ if [ ! -e "/config/subfinder.json" ] ;  then
 cp /subfinder/subfinder.json /config/subfinder.json
 fi
 
-# add cron file for running subfinder
-if [ ! -e "/config/subfinder-cron" ] ;  then 
-cp /subfinder/subfinder-cron /config/subfinder-cron
-fi
-
-crontab -u abc /config/subfinder-cron
-
 # permissions
 chown -R abc:abc \
     /config \
     /media
 
-chmod a+x /subfinder/search-subtitles.sh
 
