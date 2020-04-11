@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-# 启动定时任务,默认一天执行一次
+# 启动定时任务,默认一小时执行一次
 # 启动subfinder查找字幕
 s6-setuidgid abc \
 	subfinder /media \
