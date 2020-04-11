@@ -13,7 +13,10 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
  具体的参数请参照subfinder的readme进行修改  
 
  1、配置文件`subfinder.json`位于`/config/subfinder.json`，请根据的你情况自行修改  
- 2、计划任务配置`subfinder-cron`位于`/config/subfinder-cron`，请根据的你情况自行修改  
+ ~~2、计划任务配置`subfinder-cron`位于`/config/subfinder-cron`，请根据的你情况自行修改~~   
+ 2、去掉cron，改用sleep，降低使用难度，防止cron失效。现在设置更简单，env里设置`TASK`时间即可  
+ `s 为秒，m 为 分钟，h 为小时，d 为日数`，默认2小时执行一次任务，例`TASK=2h`
+ 		
  
 ````
 {
@@ -193,6 +196,7 @@ docker create \
   -e PUID=1026 \
   -e PGID=100 \
   -e TZ=Asia/Shanghai \
+  -e TASK=2h \
   -v /path/to/appdata/config:/config \
   -v /path/to/libraries:/media \
   superng6/subfinder
@@ -208,6 +212,7 @@ services:
       - PUID=1026
       - PGID=100
       - TZ=Asia/Shanghai
+      - TASK=2h
     volumes:
       - /path/to/appdata/config:/config
       - /path/to/libraries:/media
