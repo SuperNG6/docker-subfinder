@@ -5,4 +5,5 @@
 s6-setuidgid abc \
 	subfinder /media \
 	-c /config/subfinder.json
+echo ==============本轮搜索已结束，下次遍历为${TASK}后==============
 sleep $TASK
