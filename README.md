@@ -31,10 +31,6 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 }
 ````
 
-默认执行间隔，每小时检查一次，如需修改，编辑`/config/subfinder-cron`
-
-![gqvg31](https://cdn.jsdelivr.net/gh/SuperNG6/pic@master/uPic/gqvg31.png)
-
 
  # 官方说明文档
  <details>
@@ -144,6 +140,12 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 
 # Changelogs
+
+## 2020/04/11
+
+  	1、去掉cron，改用sleep，降低使用难度，防止cron失效。现在设置更简单，env里设置`TASK`时间即可  
+  	2、 `s 为秒，m 为 分钟，h 为小时，d 为日数`，默认2小时执行一次任务，例`TASK=2h`
+
 
 ## 2020/04/10
 
