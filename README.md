@@ -170,6 +170,9 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 ## 挂载路径
 ``/config`` ``/media``
 
+![4zb8Mq](https://cdn.jsdelivr.net/gh/SuperNG6/pic@master/uPic/4zb8Mq.png)
+![2HgLQ4](https://cdn.jsdelivr.net/gh/SuperNG6/pic@master/uPic/2HgLQ4.png)
+
 ## 关于群晖
 
  <details>
