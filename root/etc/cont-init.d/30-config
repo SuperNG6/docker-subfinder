@@ -9,5 +9,3 @@ fi
 chown -R abc:abc \
     /config \
     /media
-
-
