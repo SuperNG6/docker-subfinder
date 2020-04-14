@@ -140,6 +140,9 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 
 # Changelogs
+## 2020/04/14
+
+   1、根据广大人民群众的意见，修改默认参数为一天执行一次`1d`
 
 ## 2020/04/11
 
