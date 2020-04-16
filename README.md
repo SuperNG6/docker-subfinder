@@ -139,12 +139,13 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 # Changelogs
 ## 2020/04/16
 
-        1、取消定时执行任务，使用inotifywait文件监控 @fanyinghao  
-        2、启动容器时全局遍历一次媒体文件
+	1、取消定时执行任务，使用inotifywait文件监控 @fanyinghao  
+	2、启动容器时全局遍历一次媒体文件
+	3、增加启动容器时是否遍历媒体文件选项`BS=true`默认开启
 
 ## 2020/04/14
 
-        1、根据广大人民群众的意见，修改默认参数为一天执行一次`1d`
+	1、根据广大人民群众的意见，修改默认参数为一天执行一次`1d`
 
 ## 2020/04/11
 
