@@ -13,9 +13,6 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
  具体的参数请参照subfinder的readme进行修改  
 
  1、配置文件`subfinder.json`位于`/config/subfinder.json`，请根据的你情况自行修改  
- ~~2、计划任务配置`subfinder-cron`位于`/config/subfinder-cron`，请根据的你情况自行修改~~   
- 2、去掉cron，改用sleep，降低使用难度，防止cron失效。现在设置更简单，env里设置`TASK`时间即可  
- `s 为秒，m 为 分钟，h 为小时，d 为日数`，默认2小时执行一次任务，例`TASK=2h`
  		
  
 ````
@@ -140,6 +137,11 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 
 # Changelogs
+## 2020/04/16
+
+   1、取消定时执行任务，使用inotifywait文件监控 @fanyinghao
+   2、启动容器时全局遍历一次媒体文件
+
 ## 2020/04/14
 
    1、根据广大人民群众的意见，修改默认参数为一天执行一次`1d`
