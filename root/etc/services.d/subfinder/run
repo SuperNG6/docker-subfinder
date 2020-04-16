@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 
 inotifywait -mrq --timefmt '%y/%m/%d %H:%M' --format '%T %w%f %e' --event delete,modify,create,attrib /media | while read date time file event; do
 	case $event in
 	CREATE)
 		echo $event'-'$file'-'$date'-'$time
 		if [ "${file##*.}"x = "mkv"x ] || [ "${file##*.}"x = "mp4"x ] || [ "${file##*.}"x = "iso"x ]; then
-			/usr/local/bin/subfinder $file -c /config/subfinder.json --debug
+			s6-setuidgid abc subfinder $file -c /config/subfinder.json
 		fi
 		;;
 	esac
