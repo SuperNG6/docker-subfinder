@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 
 # 启动subfinder时查找字幕
-s6-setuidgid abc \
-	subfinder /media \
-	-c /config/subfinder.json
+if [ "$BS" == "true" ];then
+s6-setuidgid abc subfinder /media -c /config/subfinder.json
+fi
