@@ -1,12 +1,9 @@
 #!/usr/bin/with-contenv bash
 
-inotifywait -mrq --timefmt '%y/%m/%d %H:%M' --format '%T %w%f %e' --event delete,modify,create,attrib /media | while read date time file event; do
-	case $event in
-	CREATE)
-		echo $event'-'$file'-'$date'-'$time
-		if [ "${file##*.}"x = "mkv"x ] || [ "${file##*.}"x = "mp4"x ] || [ "${file##*.}"x = "iso"x ]; then
-			s6-setuidgid abc subfinder $file -c /config/subfinder.json
-		fi
-		;;
-	esac
-done
+# 启动定时任务,默认一小时执行一次
+# 启动subfinder查找字幕
+s6-setuidgid abc \
+	subfinder /media \
+	-c /config/subfinder.json
+echo ==============本轮搜索已结束，下次遍历为${TASK}后==============
+sleep $TASK
