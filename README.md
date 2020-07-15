@@ -13,76 +13,117 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
  具体的参数请参照subfinder的readme进行修改  
 
  1、配置文件`subfinder.json`位于`/config/subfinder.json`，请根据的你情况自行修改  
- ~~2、计划任务配置`subfinder-cron`位于`/config/subfinder-cron`，请根据的你情况自行修改~~   
- 2、去掉cron，改用sleep，降低使用难度，防止cron失效。现在设置更简单，env里设置`TASK`时间即可  
- `s 为秒，m 为 分钟，h 为小时，d 为日数`，默认2小时执行一次任务，例`TASK=2h`
+ 2、env里设置`TASK`时间即可  
+ `s 为秒，m 为 分钟，h 为小时，d 为日数`，默认`1d`执行一次任务，例`TASK=1d`
  		
  
-````
-{
-   "exts": ["ass", "srt"],
-   "method": ["shooter", "zimuzu", "zimuku"],
-   "video_exts": [".mp4", ".mkv", ".iso"],
-   "api_urls": {
-      "zimuku": "http://www.zimuku.la/search",
-      "zimuzu": "http://www.zmz2019.com/search",
-      "zimuzu_subtitle_api_url": "http://got001.com/api/v1/static/subtitle/detail"
-   }
-}
-````
+  ```
+  {
+    // 设置字幕库的搜索 API
+    "zimuku": "http://www.zimuku.la/search",
+    // 设置字幕组的搜索 API
+    "zimuzu": "http://www.zmz2019.com/search",
+    // 设置字幕组获取字幕下载链接的 API, 注意不包含域名
+    "zimuzu_api_subtitle_download": "/api/v1/static/subtitle/detail",
+    // 设置 SubHD 的搜索 API
+    "subhd": "https://subhd.tv/search",
+    // 设置 SubHD 获取字幕下载链接的 API, 注意不包含域名
+    "subhd_api_subtitle_download": "/ajax/down_ajax",
+    // 设置 SubHD 获取字幕预览的 API, 注意不包含域名
+    "subhd_api_subtitle_preview": "/ajax/file_ajax"
+  }
+  ```
 
 
  # 官方说明文档
  <details>
    <summary>官方说明文档</summary>
 
- | 参数              | 含义                                                                                               | 必需                                               |
+ 
+## 使用方法
+
+### 命令行
+
+- 使用默认字幕查找器（shooter）查找单个视频的字幕：
+
+  `subfinder /path/to/videofile`
+
+- 使用默认字幕查找器（shooter）查找目录下（递归所有子目录）所有视频的字幕：
+
+  `subfinder /path/to/directory_contains_video`
+
+- 使用指定的字幕查找器查找字幕，例如 zimuku：
+
+  `subfinder /path/to/videofile -m zimuku`
+
+- 同时使用多个字幕查找器查找字幕
+
+  `subfinder /path/to/videofile -m shooter zimuku`
+
+  当指定多个字幕查找器时，subfinder 会依次尝试每个字幕查找器去查找字幕，只要有一个字幕查找器返回字幕信息，则不再使用后面的字幕查找器查找字幕。
+
+  ** 注意：** 如果指定了多个字幕查找器，请不要指定 `languages` 参数，否则可能会出现 `LanguageError` 错误（因为每个 `SubSearcher` 支持的语言可能不相同）。
+
+常用参数说明（详细的参数信息请查看 `subfinder -h`）：
+
+| 参数              | 含义                                                                                               | 必需                                               |
 | ----------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
 | `-l, --languages` | 指定字幕语言，可同时指定多个。每个字幕查找器支持的语言不相同。具体支持的语言请看下文。             | 否，subfinder 默认会下载字幕查找器找到的所有字幕。 |
 | `-e, --exts`      | 指定字幕文件格式，可同时指定多个。每个字幕查找器支持的文件格式不相同。具体支持的文件格式请看下文。 | 否，subfinder 默认会下载字幕查找器找到的所有字幕。 |
 | `-m,--method`     | 指定字幕查找器，可同时指定多个。                                                                   | 否，subfinder 默认使用 shooter 查找字幕。          |
-| `--video_exts`     | 视频文件的后缀名（包括.，例如.mp4）                                    | 否          |
-| `--repeat` | 重复查找字幕，即使本地字幕已存在，默认False。 | 否 |
-| `--exclude` | 排除匹配模式的文件或目录，类似于shell的文件匹配模式。详情见下文 | 否 |
-| `--api_urls` | 指定字幕搜索器的API URL。详情见下文 | 否 |
-| `-c,--conf` | 配置文件                                                                   |否，SubFinder默认从~/.subfinder.json读取。|
-| `-s,--silence` | 静默运行，不输出日志                                                                   | 否 |
-| `--debug` | 调试模式，输出调试日志                                                                   | 否 |
-| `-h,--help` | 显示帮助信息                                                                   | 否|
+| `-k, --keyword`   | 手动搜索关键字. 当 SubFinder 使用本身的关键字无法搜索到字幕时, 可以通过这个参数手动指定关键字.     | 否                                                 |
+| `--video_exts`    | 视频文件的后缀名（包括.，例如. mp4）                                                               | 否                                                 |
+| `--ignore`        | 忽略本地已有的字幕强行查找字幕. 注意: 这可能会覆盖本地已有的字幕. 默认 False。                     | 否                                                 |
+| `--exclude`       | 排除文件或目录，支持类似于 shell 的文件匹配模式。详情见下文                                        | 否                                                 |
+| `--api_urls`      | 指定字幕搜索器的 API URL。详情见下文                                                               | 否                                                 |
+| `-c, --conf`      | 配置文件                                                                                           | 否，SubFinder 默认从~/.subfinder.json 读取。       |
+| `-s,--silence`    | 静默运行，不输出日志                                                                               | 否                                                 |
+| `--debug`         | 调试模式，输出调试日志                                                                             | 否                                                 |
+| `-h,--help`       | 显示帮助信息                                                                                       | 否                                                 |
 
-- `--exclude`, 支持的匹配模式类似于shell，`*` 匹配任意长度的字符串，`?` 匹配一个字符，`[CHARS]`匹配CHARS中的任一字符。例如：
+- `--exclude`, 支持的匹配模式类似于 shell，`*` 匹配任意长度的字符串，`?` 匹配一个字符，`[CHARS]` 匹配 CHARS 中的任一字符。例如：
 
-   - 排除包含`abc`的目录：`--exclude '*abc*/'`。注意添加单引号，防止shell对其进行扩展。
+   - 排除包含 `abc` 的目录：`--exclude '*abc*/'`。注意添加单引号，防止 shell 对其进行扩展。
 
-   - 排除包含`abc`的文件：`--exclude '*abc*'`。注意和上个例子的区别，匹配目录时结尾有`/`目录分隔符，匹配文件则没有。
+   - 排除包含 `abc` 的文件：`--exclude '*abc*'`。注意和上个例子的区别，匹配目录时结尾有 `/` 目录分隔符，匹配文件则没有。
 
 
 - `--api_urls`
 
-   [字幕库](http://www.zimuku.la)的链接不太稳定，有时候会更换域名，因此提供`--api_urls`选项自定义API URL，以防域名或链接变动。
+  [字幕库](http://www.zimuku.la) 的链接不太稳定，有时候会更换域名，因此提供 `--api_urls` 选项自定义 API URL，以防域名或链接变动。
 
-   `--api_urls`只接收JSON格式的字符串。
+  `--api_urls` 只接收 JSON 格式的字符串。
 
-   获取正确的API URL的方法：
+  获取正确的 API URL 的方法：
 
-   - 字幕库的API一般形如 http://www.zimuku.la/search， 这个URL就是网页端“搜索”功能的URL。
+  - 字幕库的 API 一般形如 http://www.zimuku.la/search， 这个 URL 就是网页端 “搜索” 功能的 URL。
 
-   - 字幕组的API一般形如 http://www.zmz2019.com/search， 这个URL同样是网页端“搜索”功能的URL。
+  - 字幕组的 API 一般形如 http://www.zmz2019.com/search， 这个 URL 同样是网页端 “搜索” 功能的 URL。
 
-   - 射手网的API比较稳定，一般不会变动。
+  - SubHD 的 API 一般形如 https://subhd.tv/search. 
 
-   配置示例：
+  - 射手网的 API 比较稳定，一般不会变动。
 
-   ```
-   {
-      // 设置字幕库的API
-      "zimuku": "http://www.zimuku.la/search",
-      // 设置字幕组的API
-      "zimuzu": "http://www.zmz2019.com/search",
-      // 设置字幕组获取字幕下载链接的API
-      "zimuzu_subtitle_api_url": "http://got001.com/api/v1/static/subtitle/detail"
-   }
-   ```
+  **如果发现字幕网站的 API URL 发生改变, 欢迎提交 issue.**
+
+  配置示例：
+
+  ```
+  {
+    // 设置字幕库的搜索 API
+    "zimuku": "http://www.zimuku.la/search",
+    // 设置字幕组的搜索 API
+    "zimuzu": "http://www.zmz2019.com/search",
+    // 设置字幕组获取字幕下载链接的 API, 注意不包含域名
+    "zimuzu_api_subtitle_download": "/api/v1/static/subtitle/detail",
+    // 设置 SubHD 的搜索 API
+    "subhd": "https://subhd.tv/search",
+    // 设置 SubHD 获取字幕下载链接的 API, 注意不包含域名
+    "subhd_api_subtitle_download": "/ajax/down_ajax",
+    // 设置 SubHD 获取字幕预览的 API, 注意不包含域名
+    "subhd_api_subtitle_preview": "/ajax/file_ajax"
+  }
+  ```
 
 支持的语言和文件格式：
 
@@ -91,6 +132,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 | shooter    | ['zh', 'en']                        | ['ass', 'srt'] |
 | zimuku     | ['zh_chs', 'zh_cht', 'en', 'zh_en'] | ['ass', 'srt'] |
 | zimuzu     | ['zh_chs', 'zh_cht', 'en', 'zh_en'] | ['ass', 'srt'] |
+| subhd      | ['zh_chs', 'zh_cht', 'en', 'zh_en'] | ['ass', 'srt'] |
 
 语言代码：
 
@@ -104,22 +146,33 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 ### 配置文件
 
-配置文件是JSON格式的，支持命令行中的所有选项。命令行中指定的选项优先级高于配置文件的。
+配置文件是 JSON 格式的，支持命令行中的所有选项。命令行中指定的选项优先级高于配置文件的。
 
-配置文件中的key一一对应于命令行选项，例如`-m，--method`对应的key为`method`。
+配置文件中的 key 一一对应于命令行选项，例如 `-m，--method` 对应的 key 为 `method`。
 
 示例：
 
 ```json
 {
-   "exts": ["ass", "srt"],
-   "method": ["shooter", "zimuzu", "zimuku"],
-   "video_exts": [".mp4", ".mkv", ".iso"],
-   "api_urls": {
-      "zimuku": "http://www.zimuku.la/search",
-      "zimuzu": "http://www.zmz2019.com/search",
-      "zimuzu_subtitle_api_url": "http://got001.com/api/v1/static/subtitle/detail"
-   }
+  "languages": ["zh", "en", "zh_chs"],
+  "exts": ["ass", "srt"],
+  "method": ["shooter", "zimuzu", "zimuku"],
+  "video_exts": [".mp4", ".mkv", ".iso"],
+  "exclude": ["excluded_path/", "*abc.mp4"],
+  "api_urls": {
+    // 设置字幕库的搜索 API
+    "zimuku": "http://www.zimuku.la/search",
+    // 设置字幕组的搜索 API
+    "zimuzu": "http://www.zmz2019.com/search",
+    // 设置字幕组获取字幕下载链接的 API, 注意不包含域名
+    "zimuzu_api_subtitle_download": "/api/v1/static/subtitle/detail",
+    // 设置 SubHD 的搜索 API
+    "subhd": "https://subhd.tv/search",
+    // 设置 SubHD 获取字幕下载链接的 API, 注意不包含域名
+    "subhd_api_subtitle_download": "/ajax/down_ajax",
+    // 设置 SubHD 获取字幕预览的 API, 注意不包含域名
+    "subhd_api_subtitle_preview": "/ajax/file_ajax"
+  }
 }
 ```
 
@@ -140,6 +193,20 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 
 # Changelogs
+## 2020/04/19
+
+   1、更新subfinder v1.1.4
+
+- 将参数 `--repeat` 修改为 `--ignore`.
+
+- 添加新参数 `-k, --keyword`.
+
+- 支持 SubHD. SubHD 在下载字幕时经常弹出验证码, 无法通过正常的API获取到字幕的下载链接, 目前的做法是通过 SubHD 的字幕预览功能获取字幕.
+
+- 修复一些 bug.
+
+- 注意: 配置文件中的一些配置项修改了名字, 具体查看官方配置文档.
+
 ## 2020/04/19
 
    1、上一个版本有问题，回退 commit@b735680240cf0b2f2734f9d0e9af49a77b81620e
