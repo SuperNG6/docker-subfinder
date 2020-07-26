@@ -1,3 +1,5 @@
+![](https://img.shields.io/docker/pulls/superng6/subfinder) ![GitHub last commit](https://img.shields.io/github/last-commit/superng6/docker-subfinder) ![GitHub stars](https://img.shields.io/github/stars/superng6/docker-subfinder) ![GitHub forks](https://img.shields.io/github/forks/superng6/docker-subfinder)
+
 # Docker SubFinder 自动刮削字幕器
 
 ### 自动刮削媒体文件字幕，打开容器后开始遍历媒体文件，遍历结束后休眠，之后每天遍历一次
