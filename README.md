@@ -20,51 +20,35 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
  		
  
   ```
-  {
-    // 设置字幕库的搜索 API
-    "zimuku": "http://www.zimuku.la/search",
-    // 设置字幕组的搜索 API
-    "zimuzu": "http://www.zmz2019.com/search",
-    // 设置字幕组获取字幕下载链接的 API, 注意不包含域名
-    "zimuzu_api_subtitle_download": "/api/v1/static/subtitle/detail",
-    // 设置 SubHD 的搜索 API
-    "subhd": "https://subhd.tv/search",
-    // 设置 SubHD 获取字幕下载链接的 API, 注意不包含域名
-    "subhd_api_subtitle_download": "/ajax/down_ajax",
-    // 设置 SubHD 获取字幕预览的 API, 注意不包含域名
-    "subhd_api_subtitle_preview": "/ajax/file_ajax"
-  }
+    {
+      "languages": ["zh", "en", "zh_chs"],
+      "exts": ["ass", "srt"],
+      "method": ["shooter", "zimuzu", "zimuku"],
+      "video_exts": [".mp4", ".mkv", ".iso"],
+      "exclude": ["excluded_path/", "*abc.mp4"],
+      "api_urls": {
+        // 设置字幕库的搜索 API
+        "zimuku": "http://www.zimuku.la/search",
+        // 设置字幕组的搜索 API
+        "zimuzu": "http://www.zmz2019.com/search",
+        // 设置字幕组获取字幕下载链接的 API, 注意不包含域名
+        "zimuzu_api_subtitle_download": "/api/v1/static/subtitle/detail",
+        // 设置 SubHD 的搜索 API
+        "subhd": "https://subhd.tv/search",
+        // 设置 SubHD 获取字幕下载链接的 API, 注意不包含域名
+        "subhd_api_subtitle_download": "/ajax/down_ajax",
+        // 设置 SubHD 获取字幕预览的 API, 注意不包含域名
+        "subhd_api_subtitle_preview": "/ajax/file_ajax"
+      }
+    }
   ```
 
 
- # 官方说明文档
- <details>
-   <summary>官方说明文档</summary>
 
- 
-## 使用方法
+## 使用说明
 
-### 命令行
-
-- 使用默认字幕查找器（shooter）查找单个视频的字幕：
-
-  `subfinder /path/to/videofile`
-
-- 使用默认字幕查找器（shooter）查找目录下（递归所有子目录）所有视频的字幕：
-
-  `subfinder /path/to/directory_contains_video`
-
-- 使用指定的字幕查找器查找字幕，例如 zimuku：
-
-  `subfinder /path/to/videofile -m zimuku`
-
-- 同时使用多个字幕查找器查找字幕
-
-  `subfinder /path/to/videofile -m shooter zimuku`
-
-  当指定多个字幕查找器时，subfinder 会依次尝试每个字幕查找器去查找字幕，只要有一个字幕查找器返回字幕信息，则不再使用后面的字幕查找器查找字幕。
-
-  ** 注意：** 如果指定了多个字幕查找器，请不要指定 `languages` 参数，否则可能会出现 `LanguageError` 错误（因为每个 `SubSearcher` 支持的语言可能不相同）。
+<details>
+   <summary>常用参数说明</summary>
 
 常用参数说明（详细的参数信息请查看 `subfinder -h`）：
 
@@ -178,6 +162,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 }
 ```
 
+
 </details>
 
 # 本镜像的一些特点
@@ -188,13 +173,17 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 
 # Architecture
-只有x86-64版，arm64版编译失败，可能有些库没有
+只有x86-64版，arm64版编译失败
 | Architecture | Tag            |
 | ------------ | -------------- |
 | x86-64       | latest         |
 
 
 # Changelogs
+## 2020/09/16
+
+   1、更新subfinder v2.0.1
+
 ## 2020/07/15
 
    1、更新subfinder v1.1.4
