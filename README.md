@@ -240,8 +240,11 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 ## 挂载路径
 ``/config`` ``/media``
-
+单个影视目录
 ![4zb8Mq](https://cdn.jsdelivr.net/gh/SuperNG6/pic@master/uPic/4zb8Mq.png)
+分类挂载影视目录
+![Xnip2020-09-28_10-47-18](https://cdn.jsdelivr.net/gh/SuperNG6/pic@master/uPic/2020-09-28/Xnip2020-09-28_10-47-18.png)
+权限设置
 ![2HgLQ4](https://cdn.jsdelivr.net/gh/SuperNG6/pic@master/uPic/2HgLQ4.png)
 
 ## 关于群晖
