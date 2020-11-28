@@ -11,7 +11,7 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 博客：https://sleele.com/2020/04/09/subfinder
 
 
- 本镜像根据：ausaki的 https://github.com/ausaki/subfinder 字幕查找器制作
+ 本镜像根据：ausaki的 https://github.com/ausaki/subfinder 字幕查找器制作，自动同步更新最新版本
  具体的参数请参照subfinder的readme进行修改  
 
  1、配置文件`subfinder.json`位于`/config/subfinder.json`，请根据的你情况自行修改  
@@ -180,6 +180,9 @@ GitHub：https://www.github.com/SuperNG6/docker-subfinder
 
 
 # Changelogs
+## 2020/11/28
+    1、更新workflow，实现自动更新subfinder release版本
+
 ## 2020/09/16
 
    1、更新subfinder v2.0.1
