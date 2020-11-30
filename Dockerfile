@@ -31,3 +31,5 @@ RUN apt -y update && apt -y install unrar-free \
 	
 # volumes
 VOLUME /config	/media
+
+ENTRYPOINT [ "/init" ]
