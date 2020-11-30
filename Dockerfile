@@ -17,8 +17,7 @@ ENV TZ=Asia/Shanghai TASK=1d PUID=1026 PGID=100
 COPY root/ /
 COPY --from=builder /downloads/s6-overlay/  /
 # install subfinder
-RUN apt -y update && apt -y install unrar-free \
-&&  pip install subfinder \
+RUN pip install subfinder \
 &&  useradd -u 1000 -U -d /config -s /bin/false abc \
 &&  usermod -G users abc  \
 &&  echo "**** cleanup ****" \
