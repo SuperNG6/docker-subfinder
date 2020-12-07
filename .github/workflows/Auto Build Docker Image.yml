@@ -3,7 +3,7 @@ name: Auto Build Docker Image.yml
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 21 * * 5'
+    - cron: '0 21 * * 5'
 
 jobs:
   buildx:
