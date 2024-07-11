@@ -37,7 +37,7 @@ jobs:
       # 构建docker images 分为tag版和latest版
       - name: Build dockerfile tag x86_64
         if: steps.set-version.outputs.status == 'success'
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           file: ./Dockerfile
           platforms: linux/amd64
