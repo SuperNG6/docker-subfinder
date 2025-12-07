@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.12 as builder
+FROM lsiobase/alpine:3.23 as builder
 # set label
 LABEL maintainer="NG6"
 ARG S6_VER=2.1.0.2
